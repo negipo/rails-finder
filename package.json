@@ -1,0 +1,31 @@
+{
+  "name": "rails-finder",
+  "main": "./lib/main",
+  "version": "0.0.0",
+  "description": "rails-finder",
+  "repository": "https://github.com/negipo/rails-finder",
+  "license": "MIT",
+  "activationCommands": {
+    "atom-workspace": [
+      "rails-finder:toggle-controller",
+      "rails-finder:toggle-model",
+      "rails-finder:toggle-view",
+      "rails-finder:toggle-helper",
+      "rails-finder:toggle-mailer",
+      "rails-finder:toggle-spec",
+      "rails-finder:toggle-lib",
+      "rails-finder:toggle-asset",
+      "rails-finder:toggle-config",
+      "rails-finder:toggle-db",
+      "rails-finder:toggle-log",
+      "rails-finder:toggle-root"
+    ]
+  },
+  "engines": {
+    "atom": ">=1.0.0"
+  },
+  "dependencies": {
+    "fs-plus": "^2.7.1",
+    "underscore-plus": "^1.6.6"
+  }
+}
