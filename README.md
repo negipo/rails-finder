@@ -1,6 +1,8 @@
 # rails-finder
+![](https://dl.dropboxusercontent.com/u/275354/g/bbf0e9e9ceddb003af3bdfa025729f8c.gif)
+
 Atom package to enable fuzzy find with rails project.
-Note that you cannot open search view while you are not opening a file in rails project, because this package search rails project dynamically for the opening file.
+Note that you cannot open select list view while you are not opening a file in rails project, because this package search rails project dynamically for the current active file path.
 
 # Keymap
 No default keymaps. You can add on `keymap.cson` like this.
