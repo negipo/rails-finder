@@ -5,18 +5,19 @@ _  = require 'underscore-plus'
 module.exports =
 class PathFinder
   railsRootPathChildren: ['app', 'config', 'lib']
+  # TODO: remove submodules and add as config
   rootPathes:
     controller: ['app/controllers']
-    model: ['app/models']
-    view: ['app/views']
-    helper: ['app/helpers']
-    mailer: ['app/mailers']
-    db: ['db']
+    model: ['app/models', 'submodules/app/models']
+    view: ['app/views', 'submodules/app/views']
+    helper: ['app/helpers', 'submodules/app/helpers']
+    mailer: ['app/mailers', 'submodules/app/mailers']
+    db: ['db', 'submodules/db']
     spec: ['spec']
-    lib: ['lib']
+    lib: ['lib', 'submodules/lib']
     log: ['log']
     asset: ['app/assets']
-    config: ['config']
+    config: ['config', 'submodules/config']
     root: ['']
   ignores: /(?:\/.git\/|\.keep$)/
 
