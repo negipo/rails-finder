@@ -1,7 +1,7 @@
 {
   "name": "rails-finder",
   "main": "./lib/main",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "rails-finder",
   "repository": "https://github.com/negipo/rails-finder",
   "license": "MIT",
