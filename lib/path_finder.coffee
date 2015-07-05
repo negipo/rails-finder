@@ -38,8 +38,6 @@ class PathFinder
     return _.uniq(pathes)
 
   getRailsRootPath: (currentPath) ->
-    return @railsRootPath if @railsRootPath?
-
     candidatePath = path.dirname(currentPath)
     while candidatePath != '/'
       candidatePath = path.resolve(path.join(candidatePath, '..'))
@@ -47,9 +45,8 @@ class PathFinder
       children = _.map(fs.listSync(candidatePath), (child) ->
         path.basename(child)
       )
-      israilsRootPath = _.all(@railsRootPathChildren, (railsRootPathChild)->
+      isRailsRootPath = _.all(@railsRootPathChildren, (railsRootPathChild)->
         _.contains(children, railsRootPathChild)
       )
-      if israilsRootPath
-        @railsRootPath = candidatePath
-        return @railsRootPath
+      if isRailsRootPath
+        return candidatePath
