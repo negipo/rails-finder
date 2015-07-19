@@ -28,6 +28,10 @@ module.exports =
         @getView().toggle(@pathFinder().getPathes('asset'))
       'rails-finder:toggle-config': =>
         @getView().toggle(@pathFinder().getPathes('config'))
+      'rails-finder:toggle-extension': =>
+        @getView().toggle(@pathFinder().getPathes('extension'))
+      'rails-finder:toggle-batch': =>
+        @getView().toggle(@pathFinder().getPathes('batch'))
       'rails-finder:toggle-root': =>
         @getView().toggle(@pathFinder().getPathes('root'))
 

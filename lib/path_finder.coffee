@@ -18,6 +18,8 @@ class PathFinder
     log: ['log']
     asset: ['app/assets']
     config: ['config', 'submodules/config']
+    extension: ['app/extensions']
+    batch: ['app/batches']
     root: ['']
   ignores: /(?:\/.git\/|\.keep$)/
 

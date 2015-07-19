@@ -18,6 +18,8 @@
       "rails-finder:toggle-config",
       "rails-finder:toggle-db",
       "rails-finder:toggle-log",
+      "rails-finder:toggle-extension",
+      "rails-finder:toggle-batch",
       "rails-finder:toggle-root"
     ]
   },
