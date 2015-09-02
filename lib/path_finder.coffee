@@ -13,7 +13,7 @@ class PathFinder
     helper: ['app/helpers', 'submodules/app/helpers']
     mailer: ['app/mailers', 'submodules/app/mailers']
     db: ['db', 'submodules/db']
-    spec: ['spec']
+    spec: ['spec', 'test']
     lib: ['lib', 'submodules/lib']
     log: ['log']
     asset: ['app/assets']
