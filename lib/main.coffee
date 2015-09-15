@@ -7,33 +7,33 @@ module.exports =
 
     atom.commands.add 'atom-workspace',
       'rails-finder:toggle-controller': =>
-        @getView().toggle(@pathFinder().getPathes('controller'))
+        @getPathes('controller')
       'rails-finder:toggle-model': =>
-        @getView().toggle(@pathFinder().getPathes('model'))
+        @getPathes('model')
       'rails-finder:toggle-view': =>
-        @getView().toggle(@pathFinder().getPathes('view'))
+        @getPathes('view')
       'rails-finder:toggle-helper': =>
-        @getView().toggle(@pathFinder().getPathes('helper'))
+        @getPathes('helper')
       'rails-finder:toggle-mailer': =>
-        @getView().toggle(@pathFinder().getPathes('mailer'))
+        @getPathes('mailer')
       'rails-finder:toggle-db': =>
-        @getView().toggle(@pathFinder().getPathes('db'))
+        @getPathes('db')
       'rails-finder:toggle-log': =>
-        @getView().toggle(@pathFinder().getPathes('log'))
+        @getPathes('log')
       'rails-finder:toggle-spec': =>
-        @getView().toggle(@pathFinder().getPathes('spec'))
+        @getPathes('spec')
       'rails-finder:toggle-lib': =>
-        @getView().toggle(@pathFinder().getPathes('lib'))
+        @getPathes('lib')
       'rails-finder:toggle-asset': =>
-        @getView().toggle(@pathFinder().getPathes('asset'))
+        @getPathes('asset')
       'rails-finder:toggle-config': =>
-        @getView().toggle(@pathFinder().getPathes('config'))
+        @getPathes('config')
       'rails-finder:toggle-extension': =>
-        @getView().toggle(@pathFinder().getPathes('extension'))
+        @getPathes('extension')
       'rails-finder:toggle-batch': =>
-        @getView().toggle(@pathFinder().getPathes('batch'))
+        @getPathes('batch')
       'rails-finder:toggle-root': =>
-        @getView().toggle(@pathFinder().getPathes('root'))
+        @getPathes('root')
 
   deactivate: ->
     if @view?
@@ -41,11 +41,18 @@ module.exports =
       @view = null
     @subscriptions.dispose()
 
+  getPathes: (key) ->
+    return unless @pathFinder()
+    @getView().toggle(@pathFinder().getPathes(key))
+
   getView: ->
     @view ?= new (require './view')
 
   pathFinder: ->
+    return unless @currentPath()
     new PathFinder(@currentPath())
 
   currentPath: ->
-    atom.workspace.getActiveTextEditor().getPath()
+    textEditor = atom.workspace.getActiveTextEditor()
+    return unless textEditor
+    textEditor.getPath()
