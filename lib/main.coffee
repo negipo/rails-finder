@@ -43,16 +43,17 @@ module.exports =
 
   getPathes: (key) ->
     return unless @pathFinder()
-    @getView().toggle(@pathFinder().getPathes(key))
+
+    if (@previousKey isnt key) and @getView().isVisible()
+      @getView().setItems(@pathFinder().getPathes(key))
+    else
+      @getView().toggle(@pathFinder().getPathes(key))
+
+    @previousKey = key
 
   getView: ->
     @view ?= new (require './view')
 
   pathFinder: ->
-    return unless @currentPath()
-    new PathFinder(@currentPath())
-
-  currentPath: ->
-    textEditor = atom.workspace.getActiveTextEditor()
-    return unless textEditor
-    textEditor.getPath()
+    # TODO: It's possiable to have more than one folder in a project
+    new PathFinder(atom.project.getPaths()[0])

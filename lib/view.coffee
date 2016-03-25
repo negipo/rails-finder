@@ -4,6 +4,9 @@ FuzzyFinderView = require path.join(pkgRoot, 'lib', 'fuzzy-finder-view')
 
 module.exports =
 class View extends FuzzyFinderView
+  isVisible: ->
+    !!@panel?.isVisible()
+
   toggle: (items) ->
     if @panel?.isVisible()
       @cancel()
