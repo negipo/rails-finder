@@ -5,23 +5,22 @@ _  = require 'underscore-plus'
 module.exports =
 class PathFinder
   railsRootPathChildren: ['app', 'config', 'lib']
-  # TODO: remove submodules and add as config
   rootPathes:
     controller: ['app/controllers']
-    model: ['app/models', 'submodules/app/models']
-    view: ['app/views', 'submodules/app/views']
-    helper: ['app/helpers', 'submodules/app/helpers']
-    mailer: ['app/mailers', 'submodules/app/mailers']
-    db: ['db', 'submodules/db']
+    model: ['app/models']
+    view: ['app/views']
+    helper: ['app/helpers']
+    mailer: ['app/mailers']
+    db: ['db']
     spec: ['spec', 'test']
-    lib: ['lib', 'submodules/lib']
+    lib: ['lib']
     log: ['log']
     asset: ['app/assets']
-    config: ['config', 'submodules/config']
+    config: ['config']
     extension: ['app/extensions']
     batch: ['app/batches']
     root: ['']
-  ignores: /(?:\/.git\/|\.keep$)/
+  ignores: /(?:\/.git\/|\.keep$|\.DS_Store$|\.eot$|\.otf$|\.ttf$|\.woff$|\.png$|\.svg$|\.jpg$|\.gif$|\.mp4$|\.eps$|\.psd$)/
 
   constructor: (currentPath) ->
     @railsRootPath = @getRailsRootPath(currentPath)
@@ -39,16 +38,11 @@ class PathFinder
 
     return _.uniq(pathes)
 
-  getRailsRootPath: (currentPath) ->
-    candidatePath = path.dirname(currentPath)
-    while candidatePath != '/'
-      candidatePath = path.resolve(path.join(candidatePath, '..'))
+  getRailsRootPath: (candidatePath) ->
+    children = _.map fs.listSync(candidatePath), (child) ->
+      path.basename(child)
 
-      children = _.map(fs.listSync(candidatePath), (child) ->
-        path.basename(child)
-      )
-      isRailsRootPath = _.all(@railsRootPathChildren, (railsRootPathChild)->
-        _.contains(children, railsRootPathChild)
-      )
-      if isRailsRootPath
-        return candidatePath
+    isRailsRootPath = _.all @railsRootPathChildren, (railsRootPathChild) ->
+      _.contains(children, railsRootPathChild)
+
+    return candidatePath if isRailsRootPath
