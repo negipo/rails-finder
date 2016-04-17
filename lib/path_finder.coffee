@@ -5,22 +5,6 @@ _  = require 'underscore-plus'
 module.exports =
 class PathFinder
   railsRootPathChildren: ['app', 'config', 'lib']
-  # TODO: remove submodules and add as config
-  rootPathes:
-    controller: ['app/controllers']
-    model: ['app/models', 'submodules/app/models']
-    view: ['app/views', 'submodules/app/views']
-    helper: ['app/helpers', 'submodules/app/helpers']
-    mailer: ['app/mailers', 'submodules/app/mailers']
-    db: ['db', 'submodules/db']
-    spec: ['spec', 'test']
-    lib: ['lib', 'submodules/lib']
-    log: ['log']
-    asset: ['app/assets']
-    config: ['config', 'submodules/config']
-    extension: ['app/extensions']
-    batch: ['app/batches']
-    root: ['']
   ignores: /(?:\/.git\/|\.keep$|\.DS_Store$|\.eot$|\.otf$|\.ttf$|\.woff$|\.png$|\.svg$|\.jpg$|\.gif$|\.mp4$|\.eps$|\.psd$)/
 
   constructor: (currentPath) ->
@@ -30,7 +14,7 @@ class PathFinder
     return [] unless @railsRootPath
 
     pathes = []
-    for relativeRootPath in @rootPathes[key]
+    for relativeRootPath in atom.config.get("rails-finder.#{key}Pathes")
       rootPath = path.join(@railsRootPath, relativeRootPath)
       appendPathes = _.filter(fs.listTreeSync(rootPath), (candidatePath) =>
         fs.isFileSync(candidatePath) && !@ignores.test(candidatePath)
@@ -52,3 +36,4 @@ class PathFinder
       )
       if isRailsRootPath
         return candidatePath
+    return atom.project.rootDirectories[0].path
