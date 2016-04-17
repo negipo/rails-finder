@@ -21,7 +21,7 @@ class PathFinder
     extension: ['app/extensions']
     batch: ['app/batches']
     root: ['']
-  ignores: /(?:\/.git\/|\.keep$)/
+  ignores: /(?:\/.git\/|\.keep$|\.DS_Store$|\.eot$|\.otf$|\.ttf$|\.woff$|\.png$|\.svg$|\.jpg$|\.gif$|\.mp4$|\.eps$|\.psd$)/
 
   constructor: (currentPath) ->
     @railsRootPath = @getRailsRootPath(currentPath)
