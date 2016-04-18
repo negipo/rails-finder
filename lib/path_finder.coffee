@@ -5,7 +5,7 @@ _  = require 'underscore-plus'
 module.exports =
 class PathFinder
   railsRootPathChildren: ['app', 'config', 'lib']
-  ignores: /(?:\/.git\/|\.keep$|\.DS_Store$|\.eot$|\.otf$|\.ttf$|\.woff$|\.png$|\.svg$|\.jpg$|\.gif$|\.mp4$|\.eps$|\.psd$)/
+  ignores: /(?:\/.git\/|\.(?:git)?keep$|\.DS_Store$|\.eot$|\.otf$|\.ttf$|\.woff$|\.png$|\.svg$|\.jpg$|\.gif$|\.mp4$|\.eps$|\.psd$)/
 
   constructor: (currentPath) ->
     @railsRootPath = @getRailsRootPath(currentPath)
