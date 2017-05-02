@@ -23,6 +23,10 @@ No default keymaps. You can add on `keymap.cson` like this.
   'ctrl-o r': 'rails-finder:toggle-root'
 ```
 
+# Contributors
+- xtr3me
+- shemerey
+
 # Acknowledgements
 Some part of codes are based on [atom-recent-finder](https://github.com/t9md/atom-recent-finder).
 Most of the features are based on [unite-rails](https://github.com/basyura/unite-rails) for vim.
