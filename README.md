@@ -21,6 +21,7 @@ No default keymaps. You can add on `keymap.cson` like this.
   'ctrl-o d': 'rails-finder:toggle-db'
   'ctrl-o g': 'rails-finder:toggle-log'
   'ctrl-o r': 'rails-finder:toggle-root'
+  'ctrl-o e': 'rails-finder:toggle-locale'
 ```
 
 # Contributors

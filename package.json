@@ -20,6 +20,7 @@
       "rails-finder:toggle-log",
       "rails-finder:toggle-extension",
       "rails-finder:toggle-batch",
+      "rails-finder:toggle-locale",
       "rails-finder:toggle-root"
     ]
   },
