@@ -81,6 +81,12 @@ module.exports =
       default: ['app/batchs']
       items:
         type: 'string'
+    localePathes:
+      description: 'Array of locale path.'
+      type: 'array'
+      default: ['app/locales']
+      items:
+        type: 'string'
     rootPathes:
       description: 'Array of root path.'
       type: 'array'
@@ -118,6 +124,8 @@ module.exports =
         @getPathes('extension')
       'rails-finder:toggle-batch': =>
         @getPathes('batch')
+      'rails-finder:toggle-locale': =>
+        @getPathes('locale')
       'rails-finder:toggle-root': =>
         @getPathes('root')
 
