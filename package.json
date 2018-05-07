@@ -1,7 +1,7 @@
 {
   "name": "rails-finder",
   "main": "./lib/main",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Atom package to enable fuzzy find with rails project.",
   "repository": "https://github.com/negipo/rails-finder",
   "license": "MIT",
