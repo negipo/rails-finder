@@ -93,6 +93,12 @@ module.exports =
       default: ['']
       items:
         type: 'string'
+    jobPathes:
+      description: 'Array of job path.'
+      type: 'array'
+      default: ['app/jobs']
+      items:
+        type: 'string'
 
   activate: (state) ->
     @subscriptions = new CompositeDisposable
@@ -128,6 +134,8 @@ module.exports =
         @getPathes('locale')
       'rails-finder:toggle-root': =>
         @getPathes('root')
+      'rails-finder:toggle-job': =>
+        @getPathes('job')
 
   deactivate: ->
     if @view?

@@ -11,3 +11,4 @@
 #   'ctrl-o d': 'rails-finder:toggle-db'
 #   'ctrl-o g': 'rails-finder:toggle-log'
 #   'ctrl-o r': 'rails-finder:toggle-root'
+#   'ctrl-o j': 'rails-finder:toggle-job'
