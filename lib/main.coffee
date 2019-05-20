@@ -1,5 +1,11 @@
 {CompositeDisposable} = require 'atom'
 PathFinder = require './path_finder'
+View = require './view'
+
+path = require('path');
+pkgRoot = atom.packages.resolvePackagePath('fuzzy-finder')
+ReporterProxy = require(path.join(pkgRoot, 'lib', 'reporter-proxy'))
+metricsReporter = new ReporterProxy()
 
 module.exports =
   config:
@@ -148,7 +154,7 @@ module.exports =
     @getView().toggle(@pathFinder().getPathes(key))
 
   getView: ->
-    @view ?= new (require './view')
+    @view ?= new View(metricsReporter)
 
   pathFinder: ->
     return unless @currentPath()
